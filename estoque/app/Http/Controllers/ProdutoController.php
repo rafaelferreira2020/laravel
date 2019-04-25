@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\DB;
 use Request;
+use Validator;
 use estoque\Produto;
+use estoque\Http\Requests\ProdutoRequest;
 
 class ProdutoController extends Controller {
 
@@ -26,13 +28,13 @@ class ProdutoController extends Controller {
         return view('produto.formularioProduto');
     }
 
-    public function adiciona(){
+    public function adiciona(ProdutoRequest $request){
 
-        Produto::create(Request::all());
+        Produto::create($request->all());
         
         return redirect()
             ->action('ProdutoController@lista')
-            ->withInput(Request::only('nome'));
+            ->withInput();
     }
 
     public function listaJson(){
@@ -43,10 +45,10 @@ class ProdutoController extends Controller {
     public function remove($id){
 
         $produto = Produto::find($id);
+        $nome = $produto->nome;
         $produto->delete();
-
         return redirect()
             ->action('ProdutoController@lista')
-            ->with('deletado', $produto);
+            ->with('nome', $nome);
     }
 }

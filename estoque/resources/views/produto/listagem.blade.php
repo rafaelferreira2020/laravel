@@ -14,6 +14,13 @@
                 <strong>Sucesso!</strong> O produto {{ old('nome') }} foi adicionado.
             </div>
         @endif
+
+        @if(isset($nome))
+            <div class="alert alert-success">
+                <strong>Sucesso!</strong> O produto {{$nome}} foi Removido!
+            </div>
+        @endif
+
             
         <table class="table table-striped">
             <thead class="thead thead-dark">
@@ -21,6 +28,7 @@
                 <td><b>VALOR</b></td>
                 <td><b>DESCRICAO</b></td>
                 <td><b>QUANTIDADE</b></td>
+                <td><b>TAMANHO</b></td>
             </thead>
 
             @foreach ($produtos as $p)
@@ -29,6 +37,7 @@
                     <td> {{$p->valor}} </td>
                     <td> {{$p->descricao}} </td>
                     <td> {{$p->quantidade}} </td>
+                    <td> {{$p->tamanho}} </td>
                     <td><a href="/produtos/mostra/{{$p->id}}">
                         <span class="fas fa-search">
                     </a></td>

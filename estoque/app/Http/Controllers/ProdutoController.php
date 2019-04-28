@@ -1,12 +1,21 @@
 <?php namespace estoque\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
-use Request;
-use Validator;
+
 use estoque\Produto;
 use estoque\Http\Requests\ProdutoRequest;
 
+use Request;
+use Validator;
+use Auth;
+
 class ProdutoController extends Controller {
+
+    public function __construct(){
+        $this->middleware('auth',
+        ['only' => ['novo', 'adiciona', 'remove']]);
+        // ['except' => ['lista', 'mostra']]);
+    }
 
     public function lista(){
 

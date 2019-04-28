@@ -41,9 +41,11 @@
                     <td><a href="/produtos/mostra/{{$p->id}}">
                         <span class="fas fa-search">
                     </a></td>
-                    <td><a href="/produtos/remove/{{$p->id}}">
-                        <span class="fas fa-trash">
-                    </a></td>
+                   @if(Auth::check()) 
+                        <td><a href="/produtos/remove/{{$p->id}}">
+                            <span class="fas fa-trash">
+                        </a></td>
+                    @endif
                 </tr>
             @endforeach
         </table> 

@@ -8,5 +8,9 @@ class Produto extends Model {
 	public $timestamps = false;
 
 	protected $guarded = ['id'];
-	protected $fillable = array('nome', 'descricao', 'quantidade', 'valor', 'tamanho');
+	protected $fillable = array('nome', 'descricao', 'quantidade', 'valor', 'tamanho', 'categoria_id');
+
+	public function categoria (){
+		return $this->belongsTo('estoque\Categoria');
+	}
 }

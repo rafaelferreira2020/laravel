@@ -29,6 +29,7 @@
                 <td><b>DESCRICAO</b></td>
                 <td><b>QUANTIDADE</b></td>
                 <td><b>TAMANHO</b></td>
+                <td><b>CATEGORIA</b></td>
             </thead>
 
             @foreach ($produtos as $p)
@@ -38,6 +39,7 @@
                     <td> {{$p->descricao}} </td>
                     <td> {{$p->quantidade}} </td>
                     <td> {{$p->tamanho}} </td>
+                    <td> {{$p->categoria->nome}} </td>
                     <td><a href="/produtos/mostra/{{$p->id}}">
                         <span class="fas fa-search">
                     </a></td>

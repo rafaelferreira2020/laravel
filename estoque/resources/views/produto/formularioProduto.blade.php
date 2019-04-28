@@ -35,6 +35,15 @@
         <input name="tamanho" type="text" class="form-control" value="{{ old('tamanho') }}">
     </div>
     <div class="form-group">
+        <label for="categoria">Categoria: </label>
+        <select name="categoria_id" type="text" class="form-control">
+            <option value="">Escolha...</option>
+            @foreach($categorias as $categoria)
+            <option value="{{ $categoria->id}} ">{{ $categoria->nome}}</option>
+            @endforeach
+        </select>
+    </div>
+    <div class="form-group">
         <label>Descricao: </label>
         <input name="descricao" class="form-control" 
             value="{{ old('descricao') }}"/>
